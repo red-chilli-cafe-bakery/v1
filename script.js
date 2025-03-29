@@ -1,60 +1,301 @@
 // Menu Data
 const menuItems = [
   {
-    id: 1,
-    name: "Paneer Tikka",
-    price: 199,
-    category: "starters",
-    image: "https://via.placeholder.com/300x200?text=Paneer+Tikka",
+    id: 10,
+    name: "Veg Noodles",
+    price: 50,
+    category: "Noodles",
+    image: "images/veg_noodles.jpg",
   },
   {
-    id: 2,
+    id: 11,
+    name: "Veg Garlic Noodles",
+    price: 60,
+    category: "Noodles",
+    image: "images/veg_noodles.jpg",
+  },
+  {
+    id: 12,
+    name: "Paneer Schezwan Noodles",
+    price: 65,
+    category: "Noodles",
+    image: "images/veg_noodles.jpg",
+  },
+  {
+    id: 13,
+    name: "Veg hakka Noodles",
+    price: 65,
+    category: "Noodles",
+    image: "images/veg_noodles.jpg",
+  },
+  {
+    id: 14,
+    name: "Maggi masala Butter",
+    price: 50,
+    category: "Noodles",
+    image: "images/veg_noodles.jpg",
+  },
+  {
+    id: 15,
+    name: "Cheese Capsicum Maggi",
+    price: 55,
+    category: "Noodles",
+    image: "images/veg_noodles.jpg",
+  },
+  {
+    id: 26,
     name: "Mattar paneer",
-    price: 125,
+    price: {
+      half: 120, // Half plate price
+      full: 220, // Full plate price
+    },
     category: "main",
     image: "images/mattar_paneer.jpg",
   },
   {
-    id: 3,
+    id: 21,
     name: "Paneer butter masala",
     price: 170,
     category: "main",
     image: "images/paneer_butter_masala.jpg",
   },
   {
-    id: 4,
-    name: "Vegetable Biryani",
-    price: 229,
+    id: 22,
+    name: "Paneer do pyaza",
+    price: 110,
     category: "main",
-    image: "https://via.placeholder.com/300x200?text=Vegetable+Biryani",
+    image: "images/Paneer_do_pyaza.jpg",
   },
   {
-    id: 5,
-    name: "Gulab Jamun",
-    price: 99,
-    category: "desserts",
+    id: 23,
+    name: "Mix Veg",
+    price: 110,
+    category: "main",
+    image: "images/mix_veg.jpg",
+  },
+  {
+    id: 24,
+    name: "Shahi Paneer",
+    price: 110,
+    category: "main",
+    image: "images/shahi_paneer.jpg",
+  },
+  {
+    id: 50,
+    name: "Veg Steam Momo",
+    price: 50,
+    category: "Momos",
+    image: "images/veg_steam_momo.png",
+  },
+  {
+    id: 50,
+    name: "Veg Fry Momo",
+    price: 55,
+    category: "Momos",
     image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
   },
   {
-    id: 6,
-    name: "Mango Lassi",
-    price: 79,
-    category: "drinks",
+    id: 50,
+    name: "Paneer Momo",
+    price: 60,
+    category: "Momos",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Paneer Fry Momo",
+    price: 65,
+    category: "Momos",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Veg Kurkure Momo",
+    price: 100,
+    category: "Momos",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Paneer Kurkure Momo",
+    price: 110,
+    category: "Momos",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Chilli Gravy Momo",
+    price: 125,
+    category: "Momos",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Veg Sandwich",
+    price: 40,
+    category: "Sandwich",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Paneer Sandwich",
+    price: 50,
+    category: "Sandwich",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Garlic Sandwich",
+    price: 55,
+    category: "Sandwich",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Cheese Sandwich",
+    price: 65,
+    category: "Sandwich",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Chocolate Sandwich",
+    price: 60,
+    category: "Sandwich",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "French Fries",
+    price: 60,
+    category: "French Fries",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 50,
+    name: "Honey Chilli Potato",
+    price: 80,
+    category: "French Fries",
+    image: "https://via.placeholder.com/300x200?text=Gulab+Jamun",
+  },
+  {
+    id: 60,
+    name: "Tikki Papdi chaat",
+    price: 60,
+    category: "chaat",
     image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
   },
   {
-    id: 7,
-    name: "Masala Papad",
-    price: 59,
-    category: "starters",
-    image: "https://via.placeholder.com/300x200?text=Masala+Papad",
+    id: 60,
+    name: "Strawberry Shake",
+    price: 60,
+    category: "Drinks",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
   },
   {
-    id: 8,
-    name: "Rasmalai",
-    price: 109,
-    category: "desserts",
-    image: "https://via.placeholder.com/300x200?text=Rasmalai",
+    id: 60,
+    name: "Pineapple Shake",
+    price: 70,
+    category: "Drinks",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Butterscoch Shake",
+    price: 80,
+    category: "Drinks",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Oreo Shake",
+    price: 90,
+    category: "Drinks",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Hot Coffee",
+    price: 55,
+    category: "Drinks",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Cold Coffee",
+    price: 70,
+    category: "Drinks",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Chocolate Coffee",
+    price: 70,
+    category: "Drinks",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Jeera Rice",
+    price: 70,
+    category: "Rice & Biryani",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Veg Fry Rice",
+    price: 95,
+    category: "Rice & Biryani",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Paneer Fry Rice",
+    price: 125,
+    category: "Rice & Biryani",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Veg Biryani",
+    price: 145,
+    category: "Rice & Biryani",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Butter Roti",
+    price: 10,
+    category: "Roti & Paratha",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Lachha Paratha",
+    price: 25,
+    category: "Roti & Paratha",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Plain Paratha",
+    price: 15,
+    category: "Roti & Paratha",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Aloo Paratha",
+    price: 30,
+    category: "Roti & Paratha",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+  },
+  {
+    id: 60,
+    name: "Paneer Paratha",
+    price: 45,
+    category: "Roti & Paratha",
+    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
   },
 ];
 
@@ -116,18 +357,50 @@ function renderMenuItems(category = "all") {
   filteredItems.forEach((item) => {
     const menuCard = document.createElement("div");
     menuCard.className = "menu-card";
+
+    // Handle different price formats
+    const priceHTML =
+      typeof item.price === "object"
+        ? `
+          <div class="price-options">
+            <button class="price-btn" data-id="${item.id}" data-portion="half">
+              Half: ₹${item.price.half}
+            </button>
+            <button class="price-btn" data-id="${item.id}" data-portion="full">
+              Full: ₹${item.price.full}
+            </button>
+          </div>
+        `
+        : `<div class="menu-card-price">₹${item.price}</div>`;
+
     menuCard.innerHTML = `
         <img src="${item.image}" alt="${item.name}">
         <div class="menu-card-body">
           <h3 class="menu-card-title">${item.name}</h3>
-          <p class="menu-card-price">₹${item.price}</p>
+          ${priceHTML}
           <button class="add-to-cart-btn" data-id="${item.id}">Add to Cart</button>
         </div>
       `;
     menuItemsContainer.appendChild(menuCard);
   });
 
-  // Add event listeners to new buttons
+  // Add event listeners to ALL buttons
+  setupButtonListeners();
+}
+
+// New function to handle button events
+function setupButtonListeners() {
+  // Price selection buttons
+  document.querySelectorAll(".price-btn").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      document
+        .querySelectorAll(`.price-btn[data-id="${e.target.dataset.id}"]`)
+        .forEach((btn) => btn.classList.remove("active"));
+      e.target.classList.add("active");
+    });
+  });
+
+  // Add to cart buttons
   document.querySelectorAll(".add-to-cart-btn").forEach((button) => {
     button.addEventListener("click", addToCart);
   });
@@ -164,14 +437,31 @@ function setupEventListeners() {
 }
 
 // Add to Cart Functionality
+// Add to Cart Functionality - FIXED VERSION
 function addToCart(e) {
   const itemId = parseInt(e.target.dataset.id);
   const menuItem = menuItems.find((item) => item.id === itemId);
 
   if (!menuItem) return;
 
+  // Handle both price formats
+  let price, portion;
+  if (typeof menuItem.price === "object") {
+    // Item has half/full options
+    portion =
+      document.querySelector(`.price-btn[data-id="${itemId}"].active`)?.dataset
+        .portion || "full";
+    price = menuItem.price[portion];
+  } else {
+    // Item has single price
+    portion = "standard";
+    price = menuItem.price;
+  }
+
   // Check if item already exists in cart
-  const existingItem = cart.find((item) => item.id === itemId);
+  const existingItem = cart.find(
+    (item) => item.id === itemId && item.portion === portion
+  );
 
   if (existingItem) {
     existingItem.quantity += 1;
@@ -179,14 +469,14 @@ function addToCart(e) {
     cart.push({
       id: menuItem.id,
       name: menuItem.name,
-      price: menuItem.price,
+      price: price,
+      portion: portion,
       quantity: 1,
     });
   }
 
   cartCount++;
-  cartTotal += menuItem.price;
-
+  cartTotal += price;
   updateCartUI();
   showAddedToCartNotification(menuItem.name);
   saveCart(); // Save after adding
@@ -353,7 +643,7 @@ document.getElementById("checkout-form").addEventListener("submit", (e) => {
     .join("\n");
 
   const message =
-    `📱 *New Order Received!* \n\n` +
+    `📱 *Send Order Details!* \n\n` +
     `👤 *Customer:* ${customerName}\n` +
     `📞 *Phone:* ${customerPhone}\n` +
     `🪑 *Table:* ${tableNumber}\n\n` +
