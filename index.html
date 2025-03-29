@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kheer Center - Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo">
+          <img src="images/logo.png" alt="Kheer Center" />
+        </div>
+        <div class="header-actions">
+          <button class="header-btn" onclick="window.open('tel:9110115022')">
+            <i class="fas fa-phone"></i> Call
+          </button>
+          <button class="header-btn" id="cart-btn">
+            <i class="fas fa-shopping-cart"></i> Cart
+            <span class="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Menu Categories -->
+    <div class="menu-categories">
+      <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn" data-category="starters">Starters</button>
+      <button class="category-btn" data-category="main">Main Course</button>
+      <button class="category-btn" data-category="desserts">Desserts</button>
+      <button class="category-btn" data-category="drinks">Drinks</button>
+    </div>
+
+    <!-- Menu Items Grid -->
+    <div class="menu-items" id="menu-items">
+      <!-- Items will be loaded dynamically from JavaScript -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Red Chilli Cafe & Bakery</h3>
+          <p>Serving authentic Indian and chinese since 2022.</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> North of Railway Station, Dus
+            lakh chowk, Nirmali, Bihar 847452
+          </p>
+          <p>
+            <i class="fas fa-phone"></i>
+            <a href="tel:9554955305">+91 6202509470</a>
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:info@kheercenter.com">info@kheercenter.com</a>
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Friday: 9AM - 10PM</p>
+          <p>Saturday - Sunday: 9AM - 11PM</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100083089191362"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Red Chilli Cafe & Bakery. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-modal-content">
+        <div class="cart-header">
+          <h3>Your Cart (<span id="cart-total-count">0</span>)</h3>
+          <button id="close-cart" class="close-btn">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+          <!-- Cart items will appear here -->
+        </div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total-price">₹0</span>
+          </div>
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+    <!-- checkout-modal -->
+    <div id="checkout-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Complete Your Order</h2>
+
+        <!-- Customer Details Form -->
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="customer-name">Your Name*</label>
+            <input type="text" id="customer-name" required />
+          </div>
+          <div class="form-group">
+            <label for="customer-phone">Phone Number*</label>
+            <input type="tel" id="customer-phone" required />
+          </div>
+          <div class="form-group">
+            <label for="table-number">Table Number</label>
+            <input
+              type="text"
+              id="table-number"
+              placeholder="Leave empty for online order"
+            />
+          </div>
+
+          <!-- Order Summary -->
+          <div class="order-summary">
+            <h3>Your Order</h3>
+            <div id="checkout-items"></div>
+            <div class="order-total">
+              <span>Total:</span>
+              <span id="checkout-total">₹0</span>
+            </div>
+          </div>
+
+          <button type="submit" class="place-order-btn">Place Order</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div id="success-modal" class="modal">
+      <div class="modal-content success">
+        <h2>Order Placed Successfully! 🎉</h2>
+        <p>Your food will be ready soon.</p>
+        <button onclick="location.reload()">Back to Menu</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
