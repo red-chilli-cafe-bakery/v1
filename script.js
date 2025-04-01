@@ -28,7 +28,7 @@ const menuItems = [
       full: 185, // Full plate price
     },
     category: "main",
-    image: "images/Paneer_do_pyaza.jpg",
+    image: "images/paneer_do_pyaza.jpg",
   },
   {
     id: 103,
