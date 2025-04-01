@@ -22,7 +22,7 @@
           <img src="images/logo.png" alt="Kheer Center" />
         </div>
         <div class="header-actions">
-          <button class="header-btn" onclick="window.open('tel:9110115022')">
+          <button class="header-btn" onclick="window.open('tel:9263872597')">
             <i class="fas fa-phone"></i> Call
           </button>
           <button class="header-btn" id="cart-btn">
@@ -36,6 +36,7 @@
     <!-- Menu Categories -->
     <div class="menu-categories">
       <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn" data-category="main">Main Course</button>
       <button class="category-btn" data-category="Noodles">Noodles</button>
       <button class="category-btn" data-category="Momos">Momos</button>
       <button class="category-btn" data-category="Sandwich">Sandwich</button>
@@ -45,7 +46,6 @@
         French Fries
       </button>
       <button class="category-btn" data-category="pizza">Pizza</button>
-      <button class="category-btn" data-category="main">Main Course</button>
       <button class="category-btn" data-category="chaat">chaat</button>
       <button class="category-btn" data-category="Roll">Roll</button>
       <button class="category-btn" data-category="Rice & Biryani">
@@ -146,11 +146,12 @@
             <input type="tel" id="customer-phone" required />
           </div>
           <div class="form-group">
-            <label for="table-number">Table Number</label>
+            <label for="Address">Address*</label>
             <input
               type="text"
-              id="table-number"
-              placeholder="Leave empty for online order"
+              id="Address"
+              required
+              placeholder="Or Table Number"
             />
           </div>
 

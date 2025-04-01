@@ -1,525 +1,564 @@
 // Menu Data
 const menuItems = [
   {
-    id: 10,
+    id: 100,
+    name: "Mattar paneer",
+    price: {
+      half: 75, // Half plate price
+      full: 125, // Full plate price
+    },
+    category: "main",
+    image: "images/mattar_paneer.jpg",
+  },
+  {
+    id: 101,
+    name: "Kadhai Paneer",
+    price: {
+      half: 100, // Half plate price
+      full: 190, // Full plate price
+    },
+    category: "main",
+    image: "images/kadhai_paneer.jpg",
+  },
+  {
+    id: 102,
+    name: "Paneer do pyaza",
+    price: {
+      half: 110, // Half plate price
+      full: 185, // Full plate price
+    },
+    category: "main",
+    image: "images/Paneer_do_pyaza.jpg",
+  },
+  {
+    id: 103,
+    name: "Mix Veg",
+    price: {
+      half: 75, // Half plate price
+      full: 120, // Full plate price
+    },
+    category: "main",
+    image: "images/mix_veg.jpg",
+  },
+  {
+    id: 104,
+    name: "Shahi Paneer",
+    price: {
+      half: 100, // Half plate price
+      full: 195, // Full plate price
+    },
+    category: "main",
+    image: "images/shahi_paneer.jpg",
+  },
+  {
+    id: 105,
+    name: "Paneer butter masala",
+    price: {
+      half: 95, // Half plate price
+      full: 170, // Full plate price
+    },
+    category: "main",
+    image: "images/paneer_butter_masala.jpg",
+  },
+  {
+    id: 106,
+    name: "Mashroom butter masala",
+    price: 210,
+    category: "main",
+    image: "images/mashroom_butter_masala.jpg",
+  },
+  {
+    id: 107,
+    name: "Paneer Lababdar",
+    price: 195,
+    category: "main",
+    image: "images/paneer_lababdar.jpg",
+  },
+  {
+    id: 108,
+    name: "Paneer Malai Kofta",
+    price: 210,
+    category: "main",
+    image: "images/Paneer_Malai_Kofta.jpg",
+  },
+  {
+    id: 109,
+    name: "Gobi Paneer",
+    price: 175,
+    category: "main",
+    image: "images/gobi_paneer.jpg",
+  },
+  {
+    id: 110,
+    name: "Palak Paneer",
+    price: 165,
+    category: "main",
+    image: "images/palak_paneer.jpg",
+  },
+  {
+    id: 111,
+    name: "Daal Makhani",
+    price: 90,
+    category: "main",
+    image: "images/daal_makhani.jpg",
+  },
+  {
+    id: 112,
+    name: "Veg Manchurian",
+    price: {
+      half: 70, // Half plate price
+      full: 130, // Full plate price
+    },
+    category: "main",
+    image: "images/veg_manchurian.jpg",
+  },
+  {
+    id: 113,
+    name: "Paneer Manchurian",
+    price: {
+      half: 80, // Half plate price
+      full: 150, // Full plate price
+    },
+    category: "main",
+    image: "images/paneer_manchurian.jpg",
+  },
+  {
+    id: 114,
+    name: "Paneer Chilli",
+    price: {
+      half: 85, // Half plate price
+      full: 160, // Full plate price
+    },
+    category: "main",
+    image: "images/paneer_chilli.jpg",
+  },
+  {
+    id: 115,
+    name: "Veg Lollipop",
+    price: 140,
+    category: "main",
+    image: "images/veg_lollipop.jpg",
+  },
+  {
+    id: 116,
+    name: "Paneer Lollipop",
+    price: 160,
+    category: "main",
+    image: "images/paneer_lollipop.jpg",
+  },
+  {
+    id: 117,
+    name: "Baby Corn Cryspy",
+    price: 155,
+    category: "main",
+    image: "images/baby_corn_crispy.jpg",
+  },
+  {
+    id: 118,
+    name: "Mashroom Chilli",
+    price: 220,
+    category: "main",
+    image: "images/mushroom_chili.jpg",
+  },
+  {
+    id: 119,
+    name: "Green Salad",
+    price: 50,
+    category: "main",
+    image: "images/green_salad.jpg",
+  },
+  {
+    id: 200,
     name: "Veg Noodles",
     price: 50,
     category: "Noodles",
     image: "images/veg_noodles.jpg",
   },
   {
-    id: 11,
+    id: 201,
     name: "Veg Garlic Noodles",
     price: 60,
     category: "Noodles",
-    image: "images/veg_noodles.jpg",
+    image: "images/Veg_Garlic_Noodles.jpg",
   },
   {
-    id: 12,
+    id: 202,
     name: "Paneer Schezwan Noodles",
     price: 65,
     category: "Noodles",
-    image: "images/veg_noodles.jpg",
+    image: "images/paneer_schezwan_noodles.jpg",
   },
   {
-    id: 13,
+    id: 203,
     name: "Veg hakka Noodles",
     price: 65,
     category: "Noodles",
-    image: "images/veg_noodles.jpg",
+    image: "images/hakka_noodles.jpg",
   },
   {
-    id: 14,
+    id: 204,
     name: "Maggi masala Butter",
     price: 50,
     category: "Noodles",
-    image: "images/veg_noodles.jpg",
+    image: "images/maggi_masala_butter.jpg",
   },
   {
-    id: 15,
+    id: 205,
     name: "Cheese Capsicum Maggi",
     price: 55,
     category: "Noodles",
-    image: "images/veg_noodles.jpg",
+    image: "images/cheese_capsicum_maggi.jpg",
   },
   {
-    id: 26,
-    name: "Mattar paneer",
-    price: {
-      half: 120, // Half plate price
-      full: 220, // Full plate price
-    },
-    category: "main",
-    image: "images/mattar_paneer.jpg",
-  },
-  {
-    id: 21,
-    name: "Paneer butter masala",
-    price: 170,
-    category: "main",
-    image: "images/paneer_butter_masala.jpg",
-  },
-  {
-    id: 22,
-    name: "Paneer do pyaza",
-    price: 110,
-    category: "main",
-    image: "images/Paneer_do_pyaza.jpg",
-  },
-  {
-    id: 23,
-    name: "Mix Veg",
-    price: 110,
-    category: "main",
-    image: "images/mix_veg.jpg",
-  },
-  {
-    id: 24,
-    name: "Shahi Paneer",
-    price: 110,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Kadhai Paneer",
-    price: 190,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Mashroom butter masala",
-    price: 210,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Paneer Lababdar",
-    price: 195,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Paneer Malai Kofta",
-    price: 210,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Gobi Paneer",
-    price: 175,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Palak Paneer",
-    price: 165,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Daal Makhani",
-    price: 90,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Veg Manchurian",
-    price: 130,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Paneer Manchurian",
-    price: 150,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Paneer Chilli",
-    price: 160,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Veg Lollipop",
-    price: 140,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Paneer Lollipop",
-    price: 160,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Baby Corn Cryspy",
-    price: 155,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Mashroom Chilli",
-    price: 220,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 24,
-    name: "Green Salad",
-    price: 50,
-    category: "main",
-    image: "images/shahi_paneer.jpg",
-  },
-  {
-    id: 50,
+    id: 300,
     name: "Veg Steam Momo",
     price: 50,
     category: "Momos",
     image: "images/veg_steam_momo.png",
   },
   {
-    id: 50,
+    id: 301,
     name: "Veg Fry Momo",
     price: 55,
     category: "Momos",
-    image: "images/veg_steam_momo.png",
+    image: "images/fry_momo.jpeg",
   },
   {
-    id: 50,
+    id: 302,
     name: "Paneer Momo",
     price: 60,
     category: "Momos",
     image: "images/veg_steam_momo.png",
   },
   {
-    id: 50,
+    id: 303,
     name: "Paneer Fry Momo",
     price: 65,
     category: "Momos",
-    image: "images/veg_steam_momo.png",
+    image: "images/fry_momo.jpeg",
   },
   {
-    id: 50,
+    id: 304,
     name: "Veg Kurkure Momo",
     price: 100,
     category: "Momos",
-    image: "images/veg_steam_momo.png",
+    image: "images/kurkure_momo.jpg",
   },
   {
-    id: 50,
+    id: 305,
     name: "Paneer Kurkure Momo",
     price: 110,
     category: "Momos",
-    image: "images/veg_steam_momo.png",
+    image: "images/kurkure_momo.jpg",
   },
   {
-    id: 50,
+    id: 306,
     name: "Chilli Gravy Momo",
     price: 125,
     category: "Momos",
-    image: "images/veg_steam_momo.png",
+    image: "images/chilli_gravy_momo.jpeg",
   },
   {
-    id: 50,
+    id: 400,
     name: "Veg Sandwich",
     price: 40,
     category: "Sandwich",
     image: "images/sandwich.png",
   },
   {
-    id: 50,
+    id: 401,
     name: "Paneer Sandwich",
     price: 50,
     category: "Sandwich",
     image: "images/sandwich.png",
   },
   {
-    id: 50,
+    id: 402,
     name: "Garlic Sandwich",
     price: 55,
     category: "Sandwich",
     image: "images/sandwich.png",
   },
   {
-    id: 50,
+    id: 403,
     name: "Cheese Sandwich",
     price: 65,
     category: "Sandwich",
     image: "images/sandwich.png",
   },
   {
-    id: 50,
+    id: 404,
     name: "Chocolate Sandwich",
     price: 60,
     category: "Sandwich",
-    image: "images/sandwich.png",
+    image: "images/chocolate_sandwich.jpg",
   },
   {
-    id: 50,
+    id: 500,
     name: "Potato chips Burger",
     price: 50,
     category: "Burger",
-    image: "images/burger.png",
+    image: "images/potato_chips_burger.jpg",
   },
   {
-    id: 50,
+    id: 501,
     name: "Red Chilli Specail Burger",
     price: 60,
     category: "Burger",
     image: "images/burger.png",
   },
   {
-    id: 50,
+    id: 502,
     name: "Cheese Burger",
     price: 65,
     category: "Burger",
     image: "images/burger.png",
   },
   {
-    id: 50,
+    id: 503,
     name: "Paneer Chips Burger",
     price: 70,
     category: "Burger",
     image: "images/burger.png",
   },
   {
-    id: 50,
+    id: 600,
     name: "Masala Pav Bhaji",
     price: 60,
     category: "Pav Bhaji",
     image: "images/pav_bhaji.png",
   },
   {
-    id: 50,
+    id: 601,
     name: "Red Chilli Spl Pav Bhaji",
     price: 70,
     category: "Pav Bhaji",
     image: "images/pav_bhaji.png",
   },
   {
-    id: 50,
+    id: 600,
     name: "French Fries",
     price: 60,
     category: "French Fries",
-    image: "images/french_fries.png",
+    image: "images/french_fries.jpg",
   },
   {
-    id: 50,
+    id: 601,
     name: "Honey Chilli Potato",
     price: 80,
     category: "French Fries",
     image: "images/french_fries.png",
   },
   {
-    id: 60,
+    id: 700,
     name: "Baby Corn Onion Pizza",
-    price: 150,
+    price: {
+      half: 110, // Half plate price
+      full: 150, // Full plate price
+    },
     category: "pizza",
-    image: "images/pizza.jpg",
+    image: "images/baby_corn_pizza.jpg",
   },
   {
-    id: 60,
-    name: "Capsicum onion creme pizza",
-    price: 165,
+    id: 701,
+    name: "Capsicum onion pizza",
+    price: {
+      half: 130, // Half plate price
+      full: 165, // Full plate price
+    },
     category: "pizza",
-    image: "images/pizza.jpg",
+    image: "images/capsicum_onion.jpg",
   },
   {
-    id: 60,
+    id: 702,
     name: "Paneer capsicum pizza",
-    price: 200,
+    price: {
+      half: 140, // Half plate price
+      full: 200, // Full plate price
+    },
     category: "pizza",
-    image: "images/pizza.jpg",
+    image: "images/Paneer_Pizza.jpg",
   },
   {
-    id: 60,
+    id: 703,
     name: "Mushroom corn pizza",
-    price: 210,
+    price: {
+      half: 170, // Half plate price
+      full: 210, // Full plate price
+    },
     category: "pizza",
-    image: "images/pizza.jpg",
+    image: "images/mashroom_corn_pizza.jpg",
   },
   {
-    id: 60,
+    id: 704,
     name: "Red Chilli special pizza",
-    price: 225,
+    price: {
+      half: 180, // Half plate price
+      full: 225, // Full plate price
+    },
     category: "pizza",
     image: "images/pizza.jpg",
   },
   {
-    id: 60,
+    id: 800,
     name: "Tikki Papdi chaat",
     price: 60,
     category: "chaat",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/tikki_chaat.jpg",
   },
   {
-    id: 60,
+    id: 900,
     name: "Paneer Cheese Roll",
     price: 95,
     category: "Roll",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/paneer_cheese_roll.jpg",
   },
   {
-    id: 60,
+    id: 901,
     name: "Veg Kathi Roll",
     price: 85,
     category: "Roll",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/veg_kathi_roll.jpg",
   },
   {
-    id: 60,
+    id: 902,
     name: "Red Chilli Special Roll",
     price: 110,
     category: "Roll",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/red_chilli_spl_roll.png",
   },
   {
-    id: 60,
-    name: "Strawberry Shake",
-    price: 60,
-    category: "Drinks",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
-  },
-  {
-    id: 60,
-    name: "Pineapple Shake",
-    price: 70,
-    category: "Drinks",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
-  },
-  {
-    id: 60,
-    name: "Butterscoch Shake",
-    price: 80,
-    category: "Drinks",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
-  },
-  {
-    id: 60,
-    name: "Oreo Shake",
-    price: 90,
-    category: "Drinks",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
-  },
-  {
-    id: 60,
-    name: "Hot Coffee",
-    price: 55,
-    category: "Drinks",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
-  },
-  {
-    id: 60,
-    name: "Cold Coffee",
-    price: 70,
-    category: "Drinks",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
-  },
-  {
-    id: 60,
-    name: "Chocolate Coffee",
-    price: 70,
-    category: "Drinks",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
-  },
-  {
-    id: 60,
+    id: 1000,
     name: "Jeera Rice",
     price: 70,
     category: "Rice & Biryani",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/jeera_rice.jpg",
   },
   {
-    id: 60,
+    id: 1001,
     name: "Veg Fry Rice",
     price: 95,
     category: "Rice & Biryani",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/veg_fried_rice.jpg",
   },
   {
-    id: 60,
+    id: 1002,
     name: "Paneer Fry Rice",
     price: 125,
     category: "Rice & Biryani",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/paneer_fried_rice.jpg",
   },
   {
-    id: 60,
+    id: 1003,
     name: "Veg Biryani",
     price: 145,
     category: "Rice & Biryani",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/vegetable_biryani.jpg",
   },
   {
-    id: 60,
+    id: 1100,
     name: "Butter Roti",
     price: 10,
     category: "Roti & Paratha",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/butter_roti.jpg",
   },
   {
-    id: 60,
+    id: 1101,
     name: "Lachha Paratha",
     price: 25,
     category: "Roti & Paratha",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/lachha_paratha.jpg",
   },
   {
-    id: 60,
+    id: 1102,
     name: "Plain Paratha",
     price: 15,
     category: "Roti & Paratha",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/plain_paratha.jpg",
   },
   {
-    id: 60,
+    id: 1103,
     name: "Aloo Paratha",
     price: 30,
     category: "Roti & Paratha",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/aloo_paratha.jpg",
   },
   {
-    id: 60,
+    id: 1104,
     name: "Paneer Paratha",
     price: 45,
     category: "Roti & Paratha",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/paneer_paratha.jpg",
   },
   {
-    id: 60,
+    id: 1200,
+    name: "Strawberry Shake",
+    price: 60,
+    category: "Drinks",
+    image: "images/strawberry_shake.jpg",
+  },
+  {
+    id: 1201,
+    name: "Pineapple Shake",
+    price: 70,
+    category: "Drinks",
+    image: "images/pineapple_shake.jpg",
+  },
+  {
+    id: 1202,
+    name: "Butterscoch Shake",
+    price: 80,
+    category: "Drinks",
+    image: "images/butterscotch_shake.jpg",
+  },
+  {
+    id: 1203,
+    name: "Oreo Shake",
+    price: 90,
+    category: "Drinks",
+    image: "images/oreo_shake.jpg",
+  },
+  {
+    id: 1204,
+    name: "Hot Coffee",
+    price: 55,
+    category: "Drinks",
+    image: "images/hot_coffee.jpg",
+  },
+  {
+    id: 1205,
+    name: "Cold Coffee",
+    price: 70,
+    category: "Drinks",
+    image: "images/cold_coffee.jpg",
+  },
+  {
+    id: 1206,
+    name: "Chocolate Coffee",
+    price: 70,
+    category: "Drinks",
+    image: "images/chocolate_coffee.jpg",
+  },
+  {
+    id: 1300,
     name: "Veg Soup",
     price: 55,
     category: "Soup",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/vegetable_soup.jpg",
   },
   {
-    id: 60,
+    id: 1301,
     name: "Tomato Soup",
     price: 55,
     category: "Soup",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/tomato_soup.jpg",
   },
   {
-    id: 60,
+    id: 1302,
     name: "Red Chilli Special Soup",
     price: 70,
     category: "Soup",
-    image: "https://via.placeholder.com/300x200?text=Mango+Lassi",
+    image: "images/red_chilli_spl_soup.jpg",
   },
 ];
 
@@ -855,8 +894,7 @@ document.getElementById("checkout-form").addEventListener("submit", (e) => {
 
   const customerName = document.getElementById("customer-name").value;
   const customerPhone = document.getElementById("customer-phone").value;
-  const tableNumber =
-    document.getElementById("table-number").value || "Online Order";
+  const Address = document.getElementById("Address").value || "Online Order";
 
   // Format order details
   const orderDetails = cart
@@ -870,7 +908,7 @@ document.getElementById("checkout-form").addEventListener("submit", (e) => {
     `📱 *Send Order Details!* \n\n` +
     `👤 *Customer:* ${customerName}\n` +
     `📞 *Phone:* ${customerPhone}\n` +
-    `🪑 *Table:* ${tableNumber}\n\n` +
+    `🪑 *Address:* ${Address}\n\n` +
     `🍽️ *Order Items:*\n${orderDetails}\n\n` +
     `💰 *Total Amount:* ₹${cartTotal}\n` +
     `⏰ *Time:* ${new Date().toLocaleString()}`;
@@ -879,7 +917,7 @@ document.getElementById("checkout-form").addEventListener("submit", (e) => {
   const encodedMessage = encodeURIComponent(message);
 
   // Replace YOUR_PHONE_NUMBER with your actual number (with country code)
-  const whatsappUrl = `https://wa.me/919110115022?text=${encodedMessage}`;
+  const whatsappUrl = `https://wa.me/919263872597?text=${encodedMessage}`;
 
   // Open WhatsApp in a new tab
   window.open(whatsappUrl, "_blank");
