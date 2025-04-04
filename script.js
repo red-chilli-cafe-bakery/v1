@@ -671,6 +671,37 @@ function updateOrderStatusModal(orderData) {
       step.classList.add("completed");
     }
   }
+
+  // **NEW: Display Ordered Items**
+  const orderItemsContainer = document.getElementById("modal-order-items");
+  if (orderItemsContainer) {
+    orderItemsContainer.innerHTML = ""; // Clear previous items
+
+    if (orderData.items && orderData.items.length > 0) {
+      orderData.items.forEach((item) => {
+        const itemElement = document.createElement("div");
+        itemElement.className = "order-item";
+        itemElement.innerHTML = `
+          <div class="order-item-name">${item.name}</div>
+          <div class="order-item-quantity">× ${item.quantity}</div>
+          <div class="order-item-price">₹${item.price * item.quantity}</div>
+        `;
+        orderItemsContainer.appendChild(itemElement);
+      });
+
+      // Add total price
+      const totalElement = document.createElement("div");
+      totalElement.className = "order-total";
+      totalElement.innerHTML = `
+        <div class="order-total-label">Total:</div>
+        <div class="order-total-price">₹${orderData.total}</div>
+      `;
+      orderItemsContainer.appendChild(totalElement);
+    } else {
+      orderItemsContainer.innerHTML =
+        '<div class="empty-order">No items found</div>';
+    }
+  }
 }
 
 function checkActiveOrder() {
@@ -1126,7 +1157,7 @@ document
         document.getElementById("Address").value || "Online Order";
 
       // Create order object
-      // In your form submission handler, when creating the order object:
+
       const orderData = {
         orderId: orderId,
         customerName: customerName,
@@ -1170,14 +1201,13 @@ document
       const whatsappUrl = `https://wa.me/919263872597?text=${encodedMessage}`;
 
       // Open WhatsApp in a new tab
-      window.open(whatsappUrl, "_blank");
+      // window.open(whatsappUrl, "_blank");
 
       // Show success modal with order ID
       document.getElementById("success-order-id").textContent = orderId;
       checkoutModal.style.display = "none";
       successModal.style.display = "flex";
 
-      // In your form submission handler, after successful order placement:
       showActiveOrder(orderId);
 
       // Clear cart

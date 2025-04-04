@@ -210,22 +210,24 @@
 
     <!-- Order Status Modal -->
     <div id="order-status-modal" class="modal">
-      <div class="order-status-content">
+      <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Order Status</h2>
-        <div id="order-status-details">
-          <div class="order-status-item">
-            <span>Order ID:</span>
-            <span id="modal-order-id"></span>
-          </div>
-          <div class="order-status-item">
-            <span>Status:</span>
-            <span id="modal-order-status">New Order</span>
-          </div>
-          <div class="order-status-item">
-            <span>Placed At:</span>
-            <span id="modal-order-time"></span>
-          </div>
+        <div class="order-id">Order ID: <span id="modal-order-id"></span></div>
+        <div class="order-time">Time: <span id="modal-order-time"></span></div>
+        <div class="order-status">Status: <span id="modal-order-status"></span></div>
+        
+        <!-- Order Timeline -->
+        <div class="status-timeline">
+          <div id="status-new" class="status-step">New</div>
+          <div id="status-progress" class="status-step">In Progress</div>
+          <div id="status-completed" class="status-step">Completed</div>
+        </div>
+    
+        <!-- NEW: Ordered Items List -->
+        <div id="modal-order-items"></div>
+      </div>
+    </div>
 
           <h3>Order Progress</h3>
           <div class="order-status-timeline">
