@@ -587,6 +587,9 @@ let cartTotal = 0;
 
 // Order Status Functions
 function showActiveOrder(orderId) {
+  const statusBtn = document.getElementById("order-status-btn");
+  statusBtn.style.display = "inline-flex"; // Keep this for fallback
+  statusBtn.classList.add("show"); // Add smooth transition class
   document.getElementById("order-status-btn").style.display = "inline-flex";
   document.getElementById("order-banner").style.display = "block";
   document.getElementById("current-order-id").textContent = orderId;

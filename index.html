@@ -16,11 +16,10 @@
   </head>
   <body>
     <!-- Header -->
-    <!-- Header -->
     <header class="header">
       <div class="header-container">
         <div class="logo">
-          <img src="images/logo.png" alt="Kheer Center" />
+          <img src="images/logo.png" alt="Red Chilli Cafe" />
         </div>
         <div class="header-actions">
           <!-- Order Status Button (visible only when there's an active order) -->
@@ -164,11 +163,11 @@
         <form id="checkout-form">
           <div class="form-group">
             <label for="customer-name">Your Name*</label>
-            <input type="text" id="customer-name" />
+            <input type="text" id="customer-name" required  />
           </div>
           <div class="form-group">
             <label for="customer-phone">Phone Number*</label>
-            <input type="tel" id="customer-phone" />
+            <input type="tel" id="customer-phone" required />
           </div>
           <div class="form-group">
             <label for="Address">Address*</label>
@@ -208,45 +207,37 @@
       </div>
     </div>
 
+   
     <!-- Order Status Modal -->
-    <div id="order-status-modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Order Status</h2>
-        <div class="order-id">Order ID: <span id="modal-order-id"></span></div>
-        <div class="order-time">Time: <span id="modal-order-time"></span></div>
-        <div class="order-status">Status: <span id="modal-order-status"></span></div>
-        
-        <!-- Order Timeline -->
-        <div class="status-timeline">
-          <div id="status-new" class="status-step">New</div>
-          <div id="status-progress" class="status-step">In Progress</div>
-          <div id="status-completed" class="status-step">Completed</div>
-        </div>
-    
-        <!-- NEW: Ordered Items List -->
-        <div id="modal-order-items"></div>
-      </div>
-    </div>
+<div id="order-status-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Order Status</h2>
+    <div class="order-id">Order ID: <span id="modal-order-id"></span></div>
+    <div class="order-time">Time: <span id="modal-order-time"></span></div>
+    <div class="order-status">Status: <span id="modal-order-status"></span></div>
 
-          <h3>Order Progress</h3>
-          <div class="order-status-timeline">
-            <div class="status-step" id="status-new">
-              <div>New Order</div>
-              <small>We've received your order</small>
-            </div>
-            <div class="status-step" id="status-progress">
-              <div>In Progress</div>
-              <small>Your order is being prepared</small>
-            </div>
-            <div class="status-step" id="status-completed">
-              <div>Completed</div>
-              <small>Your order is ready</small>
-            </div>
-          </div>
-        </div>
+    <!-- Ordered Items List -->
+    <div id="modal-order-items"></div>
+    
+    <h3>Order Progress</h3>
+    <div class="status-timeline">
+      <div id="status-new" class="status-step">
+        <div>New Order</div>
+        <small>We've received your order</small>
+      </div>
+      <div id="status-progress" class="status-step">
+        <div>In Progress</div>
+        <small>Your order is being prepared</small>
+      </div>
+      <div id="status-completed" class="status-step">
+        <div>Completed</div>
+        <small>Your order is ready</small>
       </div>
     </div>
+  </div>
+</div>
+  </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
