@@ -583,6 +583,160 @@ let cart = [];
 let cartCount = 0;
 let cartTotal = 0;
 
+///new java
+
+// Order Status Functions
+function showActiveOrder(orderId) {
+  document.getElementById("order-status-btn").style.display = "inline-flex";
+  document.getElementById("order-banner").style.display = "block";
+  document.getElementById("current-order-id").textContent = orderId;
+  localStorage.setItem("activeOrder", orderId);
+
+  // Start checking order status
+  checkOrderStatus(orderId);
+}
+
+function checkOrderStatus(orderId) {
+  const orderRef = database.ref("orders/" + orderId);
+
+  orderRef.on("value", (snapshot) => {
+    const orderData = snapshot.val();
+    if (orderData) {
+      updateOrderStatusUI(orderData);
+    } else {
+      clearActiveOrder();
+    }
+  });
+}
+
+function updateOrderStatusUI(orderData) {
+  const statusText = document.getElementById("order-status-text");
+  let displayStatus = "New Order";
+
+  if (orderData.status === "in-progress") {
+    displayStatus = "In Progress";
+  } else if (orderData.status === "completed") {
+    displayStatus = "Completed";
+  }
+
+  statusText.textContent = displayStatus;
+
+  // Update status in modal if open
+  if (
+    document.getElementById("modal-order-id")?.textContent === orderData.orderId
+  ) {
+    updateOrderStatusModal(orderData);
+  }
+}
+
+function updateOrderStatusModal(orderData) {
+  document.getElementById("modal-order-id").textContent = orderData.orderId;
+
+  const orderTime = new Date(orderData.timestamp);
+  document.getElementById("modal-order-time").textContent =
+    orderTime.toLocaleString();
+
+  // Update timeline based on status
+  const status = orderData.status || "new";
+  const statusElements = {
+    new: "status-new",
+    "in-progress": "status-progress",
+    completed: "status-completed",
+  };
+
+  // Reset all steps
+  Object.values(statusElements).forEach((stepId) => {
+    const step = document.getElementById(stepId);
+    step.className = "status-step";
+  });
+
+  // Update status display text
+  let displayStatus = "New Order";
+  if (status === "in-progress") {
+    displayStatus = "In Progress";
+  } else if (status === "completed") {
+    displayStatus = "Completed";
+  }
+  document.getElementById("modal-order-status").textContent = displayStatus;
+
+  // Activate current step
+  let foundCurrent = false;
+  for (const [statusName, stepId] of Object.entries(statusElements)) {
+    const step = document.getElementById(stepId);
+
+    if (statusName === status) {
+      step.classList.add("active");
+      foundCurrent = true;
+    } else if (!foundCurrent) {
+      step.classList.add("completed");
+    }
+  }
+}
+
+function checkActiveOrder() {
+  const activeOrderId = localStorage.getItem("activeOrder");
+  if (activeOrderId) {
+    showActiveOrder(activeOrderId);
+  }
+}
+
+// Initialize order status check on page load
+window.addEventListener("DOMContentLoaded", () => {
+  checkActiveOrder(); // Now this will work
+
+  // Rest of your existing code...
+});
+
+// Initialize order status check on page load
+window.addEventListener("DOMContentLoaded", () => {
+  checkActiveOrder();
+
+  // Add click handler for view order button
+  document.getElementById("view-order-btn")?.addEventListener("click", () => {
+    const orderId = localStorage.getItem("activeOrder");
+    if (orderId) {
+      showOrderStatusModal(orderId);
+    }
+  });
+
+  // Add click handler for order status button
+  document.getElementById("order-status-btn")?.addEventListener("click", () => {
+    const orderId = localStorage.getItem("activeOrder");
+    if (orderId) {
+      showOrderStatusModal(orderId);
+    }
+  });
+});
+
+function showOrderStatusModal(orderId) {
+  const modal = document.getElementById("order-status-modal");
+  modal.style.display = "block";
+
+  // Close modal when clicking X
+  modal.querySelector(".close").onclick = () => {
+    modal.style.display = "none";
+  };
+
+  // Close modal when clicking outside
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  // Load order data
+  database
+    .ref("orders/" + orderId)
+    .once("value")
+    .then((snapshot) => {
+      const orderData = snapshot.val();
+      if (orderData) {
+        updateOrderStatusModal(orderData);
+      }
+    });
+}
+//new java end
+
 // Load cart from localStorage
 function loadCart() {
   const savedCart = localStorage.getItem("cart");
@@ -715,7 +869,6 @@ function setupEventListeners() {
   });
 }
 
-// Add to Cart Functionality
 // Add to Cart Functionality - FIXED VERSION
 function addToCart(e) {
   const itemId = parseInt(e.target.dataset.id);
@@ -905,18 +1058,29 @@ window.addEventListener("click", (e) => {
 });
 
 // Order Counter (stored in localStorage to persist across page refreshes)
-function getNextOrderNumber() {
-  const today = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // YYYYMMDD
-  const key = `lastOrderNumber_${today}`;
-  const lastNumber = parseInt(localStorage.getItem(key)) || 0;
-  const nextNumber = lastNumber + 1;
-  localStorage.setItem(key, nextNumber.toString());
-  return nextNumber.toString().padStart(2, "0"); // 01, 02, etc.
-}
 
-function generateOrderId() {
-  const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-  return `ORD${today}${getNextOrderNumber()}`;
+// Generate a unique order ID using Firebase
+async function generateOrderId() {
+  try {
+    // Create a reference to a counter in Firebase
+    const counterRef = database.ref("orderCounter");
+
+    // Atomically increment the counter
+    const result = await counterRef.transaction((currentValue) => {
+      return (currentValue || 0) + 1;
+    });
+
+    // Format the order ID with date and counter
+    const today = new Date();
+    const dateStr = today.toISOString().slice(0, 10).replace(/-/g, "");
+    const orderNumber = result.snapshot.val().toString().padStart(6, "0");
+
+    return `ORD${dateStr}${orderNumber}`;
+  } catch (error) {
+    console.error("Error generating order ID:", error);
+    // Fallback to timestamp-based ID if Firebase fails
+    return `ORD${Date.now()}`;
+  }
 }
 
 function logOrderToAdmin(orderData) {
@@ -943,73 +1107,97 @@ function logOrderToAdmin(orderData) {
     });
 }
 // Form Submission
-document.getElementById("checkout-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const orderId = generateOrderId();
-  const customerName = document.getElementById("customer-name").value;
-  const customerPhone = document.getElementById("customer-phone").value;
-  const Address = document.getElementById("Address").value || "Online Order";
+document
+  .getElementById("checkout-form")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  // Create order object
-  const orderData = {
-    orderId: orderId,
-    customerName: customerName,
-    customerPhone: customerPhone,
-    address: Address, // Using lowercase 'address' consistently
-    items: cart.map((item) => ({
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      portion: item.portion || "full", // Ensure portion exists
-      quantity: item.quantity,
-    })),
-    total: cartTotal,
-    timestamp: new Date().getTime(),
-    status: "new", // Explicit initial status
-    statusUpdatedAt: null,
-  };
+    try {
+      // Disable submit button to prevent duplicate submissions
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Processing...";
 
-  // Save to Firebase
-  logOrderToAdmin(orderData);
+      // Generate order ID first
+      const orderId = await generateOrderId();
+      const customerName = document.getElementById("customer-name").value;
+      const customerPhone = document.getElementById("customer-phone").value;
+      const Address =
+        document.getElementById("Address").value || "Online Order";
 
-  // Format order details
-  const orderDetails = cart
-    .map(
-      (item) =>
-        `${item.name} (×${item.quantity}) - ₹${item.price * item.quantity}`
-    )
-    .join("\n");
+      // Create order object
+      // In your form submission handler, when creating the order object:
+      const orderData = {
+        orderId: orderId,
+        customerName: customerName,
+        customerPhone: customerPhone,
+        address: Address,
+        items: cart.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          portion: item.portion || "full",
+          quantity: item.quantity,
+        })),
+        total: cartTotal,
+        timestamp: new Date().getTime(),
+        status: "new", // Initial status
+        statusUpdatedAt: null,
+      };
+      // Save to Firebase
+      await database.ref("orders/" + orderId).set(orderData);
 
-  const message =
-    `📱 *Send Order Details!* \n\n` +
-    `*NEW ORDER #${orderId}*\n\n` +
-    `👤 *Customer:* ${customerName}\n` +
-    `📞 *Phone:* ${customerPhone}\n` +
-    `🪑 *Address:* ${Address}\n\n` +
-    `🍽️ *Order Items:*\n${orderDetails}\n\n` +
-    `💰 *Total Amount:* ₹${cartTotal}\n` +
-    `⏰ *Time:* ${new Date().toLocaleString()}`;
+      // Format order details for WhatsApp
+      const orderDetails = cart
+        .map(
+          (item) =>
+            `${item.name} (×${item.quantity}) - ₹${item.price * item.quantity}`
+        )
+        .join("\n");
 
-  // Encode for WhatsApp URL
-  const encodedMessage = encodeURIComponent(message);
+      const message =
+        `📱 *Send Order Details!* \n\n` +
+        `*NEW ORDER #${orderId}*\n\n` +
+        `👤 *Customer:* ${customerName}\n` +
+        `📞 *Phone:* ${customerPhone}\n` +
+        `🪑 *Address:* ${Address}\n\n` +
+        `🍽️ *Order Items:*\n${orderDetails}\n\n` +
+        `💰 *Total Amount:* ₹${cartTotal}\n` +
+        `⏰ *Time:* ${new Date().toLocaleString()}`;
 
-  // Replace YOUR_PHONE_NUMBER with your actual number (with country code)
-  const whatsappUrl = `https://wa.me/919263872597?text=${encodedMessage}`;
+      // Encode for WhatsApp URL
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/919263872597?text=${encodedMessage}`;
 
-  // Open WhatsApp in a new tab
-  window.open(whatsappUrl, "_blank");
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, "_blank");
 
-  // Show success modal
-  checkoutModal.style.display = "none";
-  successModal.style.display = "flex";
+      // Show success modal with order ID
+      document.getElementById("success-order-id").textContent = orderId;
+      checkoutModal.style.display = "none";
+      successModal.style.display = "flex";
 
-  // Clear cart
-  cart = [];
-  cartCount = 0;
-  cartTotal = 0;
-  updateCartUI();
-  saveCart();
-});
+      // In your form submission handler, after successful order placement:
+      showActiveOrder(orderId);
+
+      // Clear cart
+      cart = [];
+      cartCount = 0;
+      cartTotal = 0;
+      updateCartUI();
+      saveCart();
+    } catch (error) {
+      console.error("Order submission failed:", error);
+      alert("Failed to submit order. Please try again.");
+    } finally {
+      // Re-enable submit button
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Place Order";
+      }
+    }
+  });
 
 // Initialize the app
 init();

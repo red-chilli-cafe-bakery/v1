@@ -16,18 +16,41 @@
   </head>
   <body>
     <!-- Header -->
+    <!-- Header -->
     <header class="header">
       <div class="header-container">
         <div class="logo">
           <img src="images/logo.png" alt="Kheer Center" />
         </div>
         <div class="header-actions">
+          <!-- Order Status Button (visible only when there's an active order) -->
+          <button
+            class="header-btn"
+            id="order-status-btn"
+            style="display: none"
+          >
+            <i class="fas fa-clock"></i> Order Status
+          </button>
+
           <button class="header-btn" onclick="window.open('tel:9263872597')">
             <i class="fas fa-phone"></i> Call
           </button>
           <button class="header-btn" id="cart-btn">
             <i class="fas fa-shopping-cart"></i> Cart
             <span class="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Order Status Banner (shown when order is active) -->
+      <div class="order-banner" id="order-banner" style="display: none">
+        <div class="order-banner-content">
+          <span
+            >Order #<span id="current-order-id"></span> -
+            <span id="order-status-text">Preparing</span></span
+          >
+          <button class="view-order-btn" id="view-order-btn">
+            View Details
           </button>
         </div>
       </div>
@@ -141,11 +164,11 @@
         <form id="checkout-form">
           <div class="form-group">
             <label for="customer-name">Your Name*</label>
-            <input type="text" id="customer-name" required />
+            <input type="text" id="customer-name" />
           </div>
           <div class="form-group">
             <label for="customer-phone">Phone Number*</label>
-            <input type="tel" id="customer-phone" required />
+            <input type="tel" id="customer-phone" />
           </div>
           <div class="form-group">
             <label for="Address">Address*</label>
@@ -174,10 +197,52 @@
 
     <!-- Order Success Modal -->
     <div id="success-modal" class="modal">
-      <div class="modal-content success">
+      <div class="modal-content">
+        <span class="close">&times;</span>
         <h2>Order Placed Successfully! 🎉</h2>
-        <p>Your food will be ready soon.</p>
-        <button onclick="location.reload()">Back to Menu</button>
+        <p>Your order ID is: <strong id="success-order-id"></strong></p>
+        <p>Thank you for your order!</p>
+        <button class="back-to-menu-btn" onclick="location.reload()">
+          Back to Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- Order Status Modal -->
+    <div id="order-status-modal" class="modal">
+      <div class="order-status-content">
+        <span class="close">&times;</span>
+        <h2>Order Status</h2>
+        <div id="order-status-details">
+          <div class="order-status-item">
+            <span>Order ID:</span>
+            <span id="modal-order-id"></span>
+          </div>
+          <div class="order-status-item">
+            <span>Status:</span>
+            <span id="modal-order-status">New Order</span>
+          </div>
+          <div class="order-status-item">
+            <span>Placed At:</span>
+            <span id="modal-order-time"></span>
+          </div>
+
+          <h3>Order Progress</h3>
+          <div class="order-status-timeline">
+            <div class="status-step" id="status-new">
+              <div>New Order</div>
+              <small>We've received your order</small>
+            </div>
+            <div class="status-step" id="status-progress">
+              <div>In Progress</div>
+              <small>Your order is being prepared</small>
+            </div>
+            <div class="status-step" id="status-completed">
+              <div>Completed</div>
+              <small>Your order is ready</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
