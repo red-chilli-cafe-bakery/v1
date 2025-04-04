@@ -562,6 +562,22 @@ const menuItems = [
   },
 ];
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBlPq367AIQhchXlSc6b10GKjdbEDGjWI0",
+  authDomain: "red-chilli-cafe.firebaseapp.com",
+  databaseURL:
+    "https://red-chilli-cafe-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "red-chilli-cafe",
+  storageBucket: "red-chilli-cafe.firebasestorage.app",
+  messagingSenderId: "379073161391",
+  appId: "1:379073161391:web:ef7969e00f2adfee638c5a",
+  measurementId: "G-L8K69S717J",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
 // Cart State
 let cart = [];
 let cartCount = 0;
@@ -888,13 +904,73 @@ window.addEventListener("click", (e) => {
   if (e.target === successModal) successModal.style.display = "none";
 });
 
+// Order Counter (stored in localStorage to persist across page refreshes)
+function getNextOrderNumber() {
+  const today = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // YYYYMMDD
+  const key = `lastOrderNumber_${today}`;
+  const lastNumber = parseInt(localStorage.getItem(key)) || 0;
+  const nextNumber = lastNumber + 1;
+  localStorage.setItem(key, nextNumber.toString());
+  return nextNumber.toString().padStart(2, "0"); // 01, 02, etc.
+}
+
+function generateOrderId() {
+  const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  return `ORD${today}${getNextOrderNumber()}`;
+}
+
+function logOrderToAdmin(orderData) {
+  // Ensure Firebase is initialized
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  const database = firebase.database();
+
+  // Validate required fields
+  if (!orderData.orderId || !orderData.timestamp) {
+    console.error("Invalid order data:", orderData);
+    return;
+  }
+
+  // Save to Firebase with error handling
+  database
+    .ref("orders/" + orderData.orderId)
+    .set(orderData)
+    .then(() => console.log("Order saved successfully"))
+    .catch((error) => {
+      console.error("Firebase save error:", error);
+      alert("Failed to save order to database");
+    });
+}
 // Form Submission
 document.getElementById("checkout-form").addEventListener("submit", (e) => {
   e.preventDefault();
-
+  const orderId = generateOrderId();
   const customerName = document.getElementById("customer-name").value;
   const customerPhone = document.getElementById("customer-phone").value;
   const Address = document.getElementById("Address").value || "Online Order";
+
+  // Create order object
+  const orderData = {
+    orderId: orderId,
+    customerName: customerName,
+    customerPhone: customerPhone,
+    address: Address, // Using lowercase 'address' consistently
+    items: cart.map((item) => ({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      portion: item.portion || "full", // Ensure portion exists
+      quantity: item.quantity,
+    })),
+    total: cartTotal,
+    timestamp: new Date().getTime(),
+    status: "new", // Explicit initial status
+    statusUpdatedAt: null,
+  };
+
+  // Save to Firebase
+  logOrderToAdmin(orderData);
 
   // Format order details
   const orderDetails = cart
@@ -906,6 +982,7 @@ document.getElementById("checkout-form").addEventListener("submit", (e) => {
 
   const message =
     `📱 *Send Order Details!* \n\n` +
+    `*NEW ORDER #${orderId}*\n\n` +
     `👤 *Customer:* ${customerName}\n` +
     `📞 *Phone:* ${customerPhone}\n` +
     `🪑 *Address:* ${Address}\n\n` +
