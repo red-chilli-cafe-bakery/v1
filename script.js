@@ -1,6 +1,27 @@
 // Menu Data
 const menuItems = [
   {
+    id: 10,
+    name: "Masala dosa",
+    price: 50,
+    category: "Dosa",
+    image: "images/Masala_Dosa.jpg",
+  },
+  {
+    id: 111,
+    name: "butter masala dosa",
+    price: 60,
+    category: "Dosa",
+    image: "images/Masala_Dosa.jpg",
+  },
+  {
+    id: 12,
+    name: "cheese masala dosa",
+    price: 100,
+    category: "Dosa",
+    image: "images/Masala_Dosa.jpg",
+  },
+  {
     id: 100,
     name: "Mattar paneer",
     price: {
